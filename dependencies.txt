@@ -1,0 +1,4 @@
+firebase
+@mui/material @emotion/react @emotion/styled
+@clerk/nextjs
+@stripe/stripe-js
