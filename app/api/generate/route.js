@@ -31,11 +31,11 @@ export async function POST(req) {
     const model = client.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent(systemPrompt+ " " +  data);
     const response = await result.response;
-    console.log("response " + response.text);
+    console.log("response " + response.text());
     
 
     // Parse the JSON response from the Google Generative AI API
-    const flashcards = JSON.parse(response.text)
+    const flashcards = JSON.parse(response.text())
 
     // Return the flashcards as a JSON response
     return NextResponse.json(flashcards);
