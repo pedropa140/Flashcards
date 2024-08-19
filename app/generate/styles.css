@@ -1,0 +1,29 @@
+.flashcard {
+    perspective: 1000px;
+  }
+  
+  .flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Set a fixed height for the flashcards */
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+  }
+  
+  .flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flashcard-front,
+  .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  .flashcard-back {
+    transform: rotateY(180deg);
+  }
+  
+  /* Ensure spacing around the cards is consistent */
