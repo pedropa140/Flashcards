@@ -66,7 +66,7 @@ export default function Generate() {
           <Typography variant='h5' component='h2' gutterBottom>
             Generated Flashcards
           </Typography>
-          <Grid container spacing={3}> {/* Increased spacing to 3 for more room */}
+          <Grid container spacing={2}> {/* Increased spacing to 3 for more room */}
             {flashcards.map((flashcard, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <div
