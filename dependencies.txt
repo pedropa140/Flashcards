@@ -2,3 +2,6 @@ firebase
 @mui/material @emotion/react @emotion/styled
 @clerk/nextjs
 @stripe/stripe-js
+@google/generative-ai
+@mui/icons-material
+@next/font

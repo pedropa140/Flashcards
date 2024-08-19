@@ -176,7 +176,7 @@ export default function Generate() {
                     <div className="flashcard-front">
                       <Card>
                         <CardContent>
-                          <Typography variant="h6">Front:</Typography>
+                          {/* Removed the word "Front" */}
                           <Typography>{flashcard.front}</Typography>
                         </CardContent>
                       </Card>
@@ -184,7 +184,7 @@ export default function Generate() {
                     <div className="flashcard-back">
                       <Card>
                         <CardContent>
-                          <Typography variant="h6">Back:</Typography>
+                          {/* Removed the word "Back" */}
                           <Typography>{flashcard.back}</Typography>
                         </CardContent>
                       </Card>
@@ -196,6 +196,7 @@ export default function Generate() {
           </Grid>
         </Box>
       )}
+
 
       <Dialog open={openSaveDialog} onClose={() => setOpenSaveDialog(false)}>
         <DialogTitle>Save Flashcards</DialogTitle>
