@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { GoogleGenerativeAI } from '@google-cloud/generative-ai' // Import Google Generative AI
+import { GoogleGenerativeAI } from '@google/generative-ai' // Import Google Generative AI
 
 const systemPrompt = `
 You are a flashcard creator. Take in text and create exactly 10 flashcards from it.
@@ -16,7 +16,7 @@ Return in the following JSON format:
 `
 
 export async function POST(req) {
-    const client = new GoogleGenerativeAI() // Initialize Google Generative AI client
+    const client = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GENAI_API_KEY) // Initialize Google Generative AI client
     const data = await req.text()
   
     const completion = await client.chat.generate({
