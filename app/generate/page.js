@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Container, TextField, Button, Typography, Box } from "@mui/material";
+import { Container, TextField, Button, Typography, Box, Grid, Card, CardContent } from "@mui/material";
 
 export default function Generate() {
   const [text, setText] = useState("");
@@ -18,7 +18,7 @@ export default function Generate() {
         method: "POST",
         body: text,
       });
-      console.log(response.json());
+      //console.log(response.json());
 
       if (!response.ok) {
         throw new Error("Failed to generate flashcards");
