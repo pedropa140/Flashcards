@@ -16,11 +16,11 @@ Return in the following JSON format:
 `
 
 export async function POST(req) {
-    console.log("first print" + req);
-    console.log("second print" +req.body);
+    console.log("first print " + req);
+    console.log("second print " +req.body);
     const client = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GENAI_API_KEY) // Initialize Google Generative AI client
-    const data = await req.text;
-    console.log("data" + data);
+    const data = await req.text();
+    console.log("data " + data);
     // const completion = await client.chat.generate({
     //   messages: [
     //     { role: 'system', content: systemPrompt },
@@ -31,7 +31,7 @@ export async function POST(req) {
     const model = client.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent(systemPrompt+ " " +  data);
     const response = await result.response;
-    console.log(response.text);
+    console.log("response " + response.text);
     
 
     // Parse the JSON response from the Google Generative AI API
