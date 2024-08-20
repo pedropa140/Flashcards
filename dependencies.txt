@@ -5,3 +5,5 @@ firebase
 @google/generative-ai
 @mui/icons-material
 @next/font
+react-slick 
+slick-carousel

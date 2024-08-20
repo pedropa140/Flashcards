@@ -4,7 +4,10 @@ import { useState, useEffect } from "react";
 import {
   Container, TextField, Button, Typography, Box, Grid, Card, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Select, FormControl, InputLabel
 } from "@mui/material";
+import Slider from "react-slick";  // Import the Slider component
 import './styles.css'; // Import the custom styles for the flip effect
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import { db } from '@/firebase';  // Import the Firestore
 import { collection, addDoc, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
 import { useAuth } from "@clerk/nextjs"; // Import Clerk's useAuth
@@ -123,6 +126,15 @@ export default function Generate() {
     }
   };
 
+  // Settings for the react-slick slider
+  const sliderSettings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
     <Container maxWidth='md'>
       <Box sx={{ my: 4 }}>
@@ -165,9 +177,9 @@ export default function Generate() {
           <Typography variant='h5' component='h2' gutterBottom>
             Generated Flashcards
           </Typography>
-          <Grid container spacing={3}>
+          <Slider {...sliderSettings}>
             {flashcards.map((flashcard, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+              <div key={index}>
                 <div
                   className={`flashcard ${flipped[index] ? 'flipped' : ''}`}
                   onClick={() => handleFlip(index)}
@@ -176,7 +188,6 @@ export default function Generate() {
                     <div className="flashcard-front">
                       <Card>
                         <CardContent>
-                          {/* Removed the word "Front" */}
                           <Typography>{flashcard.front}</Typography>
                         </CardContent>
                       </Card>
@@ -184,19 +195,17 @@ export default function Generate() {
                     <div className="flashcard-back">
                       <Card>
                         <CardContent>
-                          {/* Removed the word "Back" */}
                           <Typography>{flashcard.back}</Typography>
                         </CardContent>
                       </Card>
                     </div>
                   </div>
                 </div>
-              </Grid>
+              </div>
             ))}
-          </Grid>
+          </Slider>
         </Box>
       )}
-
 
       <Dialog open={openSaveDialog} onClose={() => setOpenSaveDialog(false)}>
         <DialogTitle>Save Flashcards</DialogTitle>
