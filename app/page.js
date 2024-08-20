@@ -71,10 +71,10 @@ export default function SignUpPage() {
               <Card variant="outlined">
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
-                    Customizable Flashcards
+                    Stored For Later
                   </Typography>
                   <Typography color="textSecondary">
-                    Customize the design and content of your flashcards to match your study needs.
+                    Easily reference your cards whenever you want. Save your cards for future use.
                   </Typography>
                 </CardContent>
               </Card>
@@ -83,10 +83,10 @@ export default function SignUpPage() {
               <Card variant="outlined">
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
-                    Study Insights
+                    Beautiful motions
                   </Typography>
                   <Typography color="textSecondary">
-                    Get insights and track your progress with detailed analytics on your study sessions.
+                    Flip your flashcards to see both sides for better memory retention.
                   </Typography>
                 </CardContent>
               </Card>
@@ -112,7 +112,7 @@ export default function SignUpPage() {
                     Access to basic flashcard features and limited storage.
                   </Typography>
                   <Button variant="contained" color="primary" fullWidth>
-                    Choose Basic
+                    Coming soon!
                   </Button>
                 </CardContent>
               </Card>
@@ -130,7 +130,7 @@ export default function SignUpPage() {
                     Unlimited flashcards and storage, with priority support.
                   </Typography>
                   <Button variant="contained" color="primary" fullWidth>
-                    Choose Pro
+                    Coming soon!
                   </Button>
                 </CardContent>
               </Card>
