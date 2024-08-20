@@ -4,24 +4,24 @@ import { useState, useEffect } from "react";
 import {
   Container, TextField, Button, Typography, Box, Grid, Card, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Select, FormControl, InputLabel
 } from "@mui/material";
-import Slider from "react-slick";  
-import './styles.css'; 
+import Slider from "react-slick";
+import './styles.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { db } from '@/firebase';  
+import { db } from '@/firebase';
 import { collection, addDoc, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
-import { useAuth } from "@clerk/nextjs"; 
+import { useAuth } from "@clerk/nextjs";
 
 export default function Generate() {
   const [text, setText] = useState("");
   const [flashcards, setFlashcards] = useState([]);
-  const [flipped, setFlipped] = useState([]); 
+  const [flipped, setFlipped] = useState([]);
   const [openSaveDialog, setOpenSaveDialog] = useState(false);
   const [openShowSetsDialog, setOpenShowSetsDialog] = useState(false);
   const [collectionName, setCollectionName] = useState("");
   const [selectedSet, setSelectedSet] = useState("");
   const [flashcardSets, setFlashcardSets] = useState([]);
-  const { userId } = useAuth(); 
+  const { userId } = useAuth();
 
   useEffect(() => {
     if (userId) {
@@ -92,7 +92,7 @@ export default function Generate() {
       });
       console.log("Flashcard collection saved successfully.");
       setOpenSaveDialog(false);
-      setCollectionName(""); 
+      setCollectionName("");
 
       const querySnapshot = await getDocs(collection(db, `users/${userId}/flashcardSets`));
       const sets = [];
@@ -114,7 +114,7 @@ export default function Generate() {
 
         if (docSnap.exists()) {
           setFlashcards(docSnap.data().flashcards);
-          setFlipped(new Array(docSnap.data().flashcards.length).fill(false)); 
+          setFlipped(new Array(docSnap.data().flashcards.length).fill(false));
           setOpenShowSetsDialog(false);
         } else {
           console.log("No such document!");
@@ -158,15 +158,26 @@ export default function Generate() {
             variant='contained'
             color='secondary'
             onClick={() => setOpenShowSetsDialog(true)}
-            sx={{ flex: 1 }}
+            sx={{
+              flex: 1,
+              backgroundColor: '#1976d2', // Set the background color
+              '&:hover': {
+                backgroundColor: '#1565c0', // Darker shade on hover
+              },
+            }}
           >
             Show Sets
-          </Button>
-          <Button
+          </Button><Button
             variant='contained'
             color='secondary'
-            onClick={() => setOpenSaveDialog(true)}
-            sx={{ flex: 1 }}
+            onClick={() => setOpenShowSetsDialog(true)}
+            sx={{
+              flex: 1,
+              backgroundColor: '#1976d2', // Set the background color
+              '&:hover': {
+                backgroundColor: '#1565c0', // Darker shade on hover
+              },
+            }}
           >
             Save Flashcards
           </Button>
