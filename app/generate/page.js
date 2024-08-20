@@ -4,24 +4,24 @@ import { useState, useEffect } from "react";
 import {
   Container, TextField, Button, Typography, Box, Grid, Card, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Select, FormControl, InputLabel
 } from "@mui/material";
-import Slider from "react-slick";  // Import the Slider component
-import './styles.css'; // Import the custom styles for the flip effect
+import Slider from "react-slick";  
+import './styles.css'; 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { db } from '@/firebase';  // Import the Firestore
+import { db } from '@/firebase';  
 import { collection, addDoc, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
-import { useAuth } from "@clerk/nextjs"; // Import Clerk's useAuth
+import { useAuth } from "@clerk/nextjs"; 
 
 export default function Generate() {
   const [text, setText] = useState("");
   const [flashcards, setFlashcards] = useState([]);
-  const [flipped, setFlipped] = useState([]); // Track the flip state for each card
+  const [flipped, setFlipped] = useState([]); 
   const [openSaveDialog, setOpenSaveDialog] = useState(false);
   const [openShowSetsDialog, setOpenShowSetsDialog] = useState(false);
   const [collectionName, setCollectionName] = useState("");
   const [selectedSet, setSelectedSet] = useState("");
   const [flashcardSets, setFlashcardSets] = useState([]);
-  const { userId } = useAuth(); // Get the logged-in user's ID
+  const { userId } = useAuth(); 
 
   useEffect(() => {
     if (userId) {
@@ -60,7 +60,7 @@ export default function Generate() {
 
       const data = await response.json();
       setFlashcards(data.flashcards);
-      setFlipped(new Array(data.flashcards.length).fill(false)); // Initialize flip state for all cards
+      setFlipped(new Array(data.flashcards.length).fill(false));
     } catch (error) {
       console.error("Error generating flashcards:", error);
       alert("An error occurred while generating flashcards. Please try again.");
@@ -92,9 +92,8 @@ export default function Generate() {
       });
       console.log("Flashcard collection saved successfully.");
       setOpenSaveDialog(false);
-      setCollectionName(""); // Clear the collection name input
+      setCollectionName(""); 
 
-      // Refresh flashcard sets list
       const querySnapshot = await getDocs(collection(db, `users/${userId}/flashcardSets`));
       const sets = [];
       querySnapshot.forEach((doc) => {
@@ -115,7 +114,7 @@ export default function Generate() {
 
         if (docSnap.exists()) {
           setFlashcards(docSnap.data().flashcards);
-          setFlipped(new Array(docSnap.data().flashcards.length).fill(false)); // Initialize flip state for all cards
+          setFlipped(new Array(docSnap.data().flashcards.length).fill(false)); 
           setOpenShowSetsDialog(false);
         } else {
           console.log("No such document!");
@@ -126,7 +125,6 @@ export default function Generate() {
     }
   };
 
-  // Settings for the react-slick slider
   const sliderSettings = {
     dots: true,
     infinite: false,
@@ -137,8 +135,8 @@ export default function Generate() {
 
   return (
     <Container maxWidth='md'>
-      <Box sx={{ my: 4 }}>
-        <Typography variant='h4' component='h1' gutterBottom>
+      <Box sx={{ my: 4, p: 3, borderRadius: 2, boxShadow: 3, backgroundColor: '#f9f9f9' }}>
+        <Typography variant='h4' component='h1' gutterBottom sx={{ mb: 2 }}>
           Generate Flashcards
         </Typography>
         <TextField
@@ -152,14 +150,15 @@ export default function Generate() {
           sx={{ mb: 2, backgroundColor: 'white', '& .MuiInputBase-input': { color: 'black' } }}
         />
 
-        <Button variant='contained' color='primary' onClick={handleSubmit} fullWidth>
+        <Button variant='contained' color='primary' onClick={handleSubmit} fullWidth sx={{ mb: 2 }}>
           Generate Flashcards
         </Button>
-        <Box sx={{ mt: 2, display: 'flex', gap: 2 }}>
+        <Box sx={{ display: 'flex', gap: 2 }}>
           <Button
             variant='contained'
             color='secondary'
             onClick={() => setOpenShowSetsDialog(true)}
+            sx={{ flex: 1 }}
           >
             Show Sets
           </Button>
@@ -167,6 +166,7 @@ export default function Generate() {
             variant='contained'
             color='secondary'
             onClick={() => setOpenSaveDialog(true)}
+            sx={{ flex: 1 }}
           >
             Save Flashcards
           </Button>
@@ -187,16 +187,40 @@ export default function Generate() {
                 >
                   <div className="flashcard-inner">
                     <div className="flashcard-front">
-                      <Card>
+                      <Card
+                        sx={{
+                          height: '200px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          backgroundColor: '#ffffff',
+                          boxShadow: 3,
+                          borderRadius: 2
+                        }}
+                      >
                         <CardContent>
-                          <Typography>{flashcard.front}</Typography>
+                          <Typography variant="h6" align="center">
+                            {flashcard.front}
+                          </Typography>
                         </CardContent>
                       </Card>
                     </div>
                     <div className="flashcard-back">
-                      <Card>
+                      <Card
+                        sx={{
+                          height: '200px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          backgroundColor: '#ffffff',
+                          boxShadow: 3,
+                          borderRadius: 2
+                        }}
+                      >
                         <CardContent>
-                          <Typography>{flashcard.back}</Typography>
+                          <Typography variant="h6" align="center">
+                            {flashcard.back}
+                          </Typography>
                         </CardContent>
                       </Card>
                     </div>
