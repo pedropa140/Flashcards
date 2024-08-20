@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import {
-  Container, TextField, Button, Typography, Box, Grid, Card, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Select, FormControl, InputLabel
+  Container, TextField, Button, Typography, Box, Card, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Select, FormControl, InputLabel
 } from "@mui/material";
 import Slider from "react-slick";
 import './styles.css';
@@ -88,12 +88,14 @@ export default function Generate() {
       const setRef = doc(db, `users/${userId}/flashcardSets`, collectionName);
       await setDoc(setRef, {
         flashcards: flashcards,
-        createdAt: new Date()
+        createdAt: new Date(),
+        collectionName: collectionName // Save the collection name
       });
       console.log("Flashcard collection saved successfully.");
       setOpenSaveDialog(false);
       setCollectionName("");
 
+      // Update the list of flashcard sets
       const querySnapshot = await getDocs(collection(db, `users/${userId}/flashcardSets`));
       const sets = [];
       querySnapshot.forEach((doc) => {
@@ -167,10 +169,11 @@ export default function Generate() {
             }}
           >
             Show Sets
-          </Button><Button
+          </Button>
+          <Button
             variant='contained'
             color='secondary'
-            onClick={() => setOpenShowSetsDialog(true)}
+            onClick={() => setOpenSaveDialog(true)}
             sx={{
               flex: 1,
               backgroundColor: '#1976d2', // Set the background color
@@ -266,7 +269,6 @@ export default function Generate() {
         <DialogTitle>Select Flashcard Set</DialogTitle>
         <DialogContent>
           <FormControl fullWidth>
-            <InputLabel>Select a Flashcard Set</InputLabel>
             <Select
               value={selectedSet}
               onChange={(e) => setSelectedSet(e.target.value)}
