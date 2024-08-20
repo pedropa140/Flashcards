@@ -41,3 +41,18 @@
   align-items: center;
   justify-content: center;
 }
+
+/* Ensure the custom CSS is applied to slick arrows */
+.slick-prev {
+  color: black !important; /* Set the arrow color to black */
+}
+
+.slick-next {
+  color: black !important; /* Set the arrow color to black */
+}
+
+/* Customize the arrows' appearance */
+.slick-prev:before, .slick-next:before {
+  font-size: 24px !important; /* Adjust the size of the arrows if needed */
+  color: black !important; /* Ensure the color is applied to the arrow icon */
+}

@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import Slider from "react-slick";  // Import the Slider component
 import './styles.css'; // Import the custom styles for the flip effect
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { db } from '@/firebase';  // Import the Firestore
 import { collection, addDoc, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
@@ -149,8 +149,9 @@ export default function Generate() {
           multiline
           rows={4}
           variant='outlined'
-          sx={{ mb: 2 }}
+          sx={{ mb: 2, backgroundColor: 'white', '& .MuiInputBase-input': { color: 'black' } }}
         />
+
         <Button variant='contained' color='primary' onClick={handleSubmit} fullWidth>
           Generate Flashcards
         </Button>
