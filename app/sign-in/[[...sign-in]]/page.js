@@ -5,7 +5,9 @@ import Link from "next/link";
 export default function SignUpPage() {
   return (
     <Container maxWidth='100vw'>
-      <AppBar position='static'>
+      <AppBar position='static'
+       sx={{ backgroundColor: "#3561c0" }}
+       >
         <Toolbar>
           <Typography
             variant='h6'
@@ -33,8 +35,9 @@ export default function SignUpPage() {
       flexDirection = "column" 
       alignItems="center" 
       justifyContent="center"
+      sx={{marginTop:'100px'}}
         >
-            <Typography variant="h4" gutterBottom>Sign In</Typography>
+            <Typography variant="h4" sx={{fontFamily:`'FreeMono', monospace'`, color: '#4771cc'}} gutterBottom>Sign In</Typography>
             <SignIn />
       </Box>
     </Container>

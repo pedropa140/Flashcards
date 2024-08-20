@@ -137,8 +137,8 @@ export default function Generate() {
 
   return (
     <Container maxWidth='md'>
-      <Box sx={{ my: 4, p: 3, borderRadius: 2, boxShadow: 3, backgroundColor: '#f9f9f9' }}>
-        <Typography variant='h4' component='h1' gutterBottom sx={{ mb: 2 }}>
+      <Box sx={{ my: 4, p: 3, borderRadius: 2, boxShadow: 3, backgroundColor: '#b8c0ff' }}>
+        <Typography variant='h4' component='h1' gutterBottom sx={{ mb: 2, fontFamily:`'FreeMono', monospace'`, color: '#4771cc' }}>
           Generate Flashcards
         </Typography>
         <TextField
@@ -149,10 +149,10 @@ export default function Generate() {
           multiline
           rows={4}
           variant='outlined'
-          sx={{ mb: 2, backgroundColor: 'white', '& .MuiInputBase-input': { color: 'black' } }}
+          sx={{ mb: 2, backgroundColor: '#b8c0ff', '& .MuiInputBase-input': { color: 'black' } }}
         />
 
-        <Button variant='contained' color='primary' onClick={handleSubmit} fullWidth sx={{ mb: 2 }}>
+        <Button variant='contained' color='primary' onClick={handleSubmit} fullWidth sx={{fontFamily:`'FreeMono', monospace`, backgroundColor: '#c8b6ff', '&:hover': {backgroundColor:'#E7C6FF'}, mb: 2 }}>
           Generate Flashcards
         </Button>
         <Box sx={{ display: 'flex', gap: 2 }}>
@@ -161,10 +161,11 @@ export default function Generate() {
             color='secondary'
             onClick={() => setOpenShowSetsDialog(true)}
             sx={{
+              fontFamily:`'FreeMono', monospace`,
               flex: 1,
-              backgroundColor: '#1976d2', // Set the background color
+              backgroundColor: '#c8b6ff', // Set the background color
               '&:hover': {
-                backgroundColor: '#1565c0', // Darker shade on hover
+                backgroundColor: '#E7C6FF', // Darker shade on hover
               },
             }}
           >
@@ -175,10 +176,11 @@ export default function Generate() {
             color='secondary'
             onClick={() => setOpenSaveDialog(true)}
             sx={{
+              fontFamily:`'FreeMono', monospace`,
               flex: 1,
-              backgroundColor: '#1976d2', // Set the background color
+              backgroundColor: '#c8b6ff', // Set the background color
               '&:hover': {
-                backgroundColor: '#1565c0', // Darker shade on hover
+                backgroundColor: '#E7C6FF', // Darker shade on hover
               },
             }}
           >
@@ -189,7 +191,7 @@ export default function Generate() {
 
       {flashcards.length > 0 && (
         <Box sx={{ mt: 4 }}>
-          <Typography variant='h5' component='h2' gutterBottom>
+          <Typography variant='h5' component='h2' sx={{ fontFamily:`'FreeMono', monospace`, color: '#4771cc'}} gutterBottom>
             Generated Flashcards
           </Typography>
           <Slider {...sliderSettings}>
@@ -203,11 +205,12 @@ export default function Generate() {
                     <div className="flashcard-front">
                       <Card
                         sx={{
+                          fontFamily:`'FreeMono', monospace`, color: '#4771cc',
                           height: '200px',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          backgroundColor: '#ffffff',
+                          backgroundColor: '#b8c0ff',
                           boxShadow: 3,
                           borderRadius: 2
                         }}
@@ -222,11 +225,12 @@ export default function Generate() {
                     <div className="flashcard-back">
                       <Card
                         sx={{
+                          fontFamily:`'FreeMono', monospace`, color: '#4771cc',
                           height: '200px',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          backgroundColor: '#ffffff',
+                          backgroundColor: '#B8C0FF',
                           boxShadow: 3,
                           borderRadius: 2
                         }}
