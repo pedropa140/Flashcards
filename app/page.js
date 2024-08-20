@@ -56,7 +56,7 @@ export default function SignUpPage() {
           </Typography>
           <Grid container spacing={4}>
             <Grid item xs={12} md={4}>
-              <Card variant="outlined">
+              <Card variant="outlined" sx={{ height: '100%', borderRadius: '15px' }}>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
                     Easy Text Input
@@ -68,7 +68,7 @@ export default function SignUpPage() {
               </Card>
             </Grid>
             <Grid item xs={12} md={4}>
-              <Card variant="outlined">
+              <Card variant="outlined" sx={{ height: '100%', borderRadius: '15px' }}>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
                     Customizable Flashcards
@@ -80,7 +80,7 @@ export default function SignUpPage() {
               </Card>
             </Grid>
             <Grid item xs={12} md={4}>
-              <Card variant="outlined">
+              <Card variant="outlined" sx={{ height: '100%', borderRadius: '15px' }}>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
                     Study Insights
@@ -100,16 +100,16 @@ export default function SignUpPage() {
           </Typography>
           <Grid container spacing={4}>
             <Grid item xs={12} md={6}>
-              <Card>
+              <Card sx={{ height: '100%', borderRadius: '15px' }}>
                 <CardContent>
-                  <Typography variant="h5" gutterBottom>
+                  <Typography variant="h5" gutterBottom sx={{ height: '100%', borderRadius: '15px' }}>
                     Basic
                   </Typography>
                   <Typography variant="h6" color="primary" gutterBottom>
                     $5 / month
                   </Typography>
                   <Typography color="textSecondary" paragraph>
-                    Access to basic flashcard features and limited storage.
+                   Access to basic flashcard features and limited storage.
                   </Typography>
                   <Button variant="contained" color="primary" fullWidth>
                     Choose Basic
@@ -118,7 +118,7 @@ export default function SignUpPage() {
               </Card>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Card>
+              <Card sx={{ height: '100%', borderRadius: '15px' }}>
                 <CardContent>
                   <Typography variant="h5" gutterBottom>
                     Pro
